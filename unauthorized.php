@@ -1,20 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>403 - Access Denied</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        .lock-box { text-align: center; margin-top: 100px; padding: 40px; border-top: 5px solid #d32f2f; }
-        .icon { font-size: 60px; }
+        .lock-container { text-align: center; margin-top: 100px; padding: 40px; background: #fff; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 5px solid #d32f2f; }
+        .lock-icon { font-size: 80px; color: #d32f2f; margin-bottom: 20px; }
+        .btn-login { background: #1b5e20; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block; margin-top: 20px; }
     </style>
 </head>
 <body class="container">
-    <div class="lock-box admin-box">
-        <div class="icon">🔒</div>
-        <h1 style="color:#d32f2f;">Access Denied</h1>
-        <p>You must be a registered administrator to access this area.</p>
-        <br>
-        <a href="login.php" class="btn-home" style="background:#1b5e20; padding:10px 20px; color:white; text-decoration:none; border-radius:5px;">Go to Login</a>
+    <div class="lock-container">
+        <div class="lock-icon">🔒</div>
+        <h1>403 - Restricted Access</h1>
+        <p>Sorry, you do not have permission to view this management console.</p>
+        <p>Only authorized administrators from <strong>Safari Tours</strong> can access this area.</p>
+        <a href="login.php" class="btn-login">Go to Admin Login</a>
     </div>
 </body>
 </html>
