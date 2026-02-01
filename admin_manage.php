@@ -77,7 +77,7 @@ if(isset($_POST['add_item'])) {
                 <td>{$row['category']}</td>
                 <td>KES ".number_format($row['price'])."</td>
                 <td>
-                    <a href='edit.php?id={$row['id']}'>Edit</a> | 
+                    <a href='edit.php?id=<?php echo $row['id']; ?>' style='color:#1b5e20; font-weight:bold;'>Edit</a> 
                     <a href='admin_manage.php?delete={$row['id']}' onclick='return confirm(\"Delete this?\")' style='color:red;'>Delete</a>
                 </td>
             </tr>";
