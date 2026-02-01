@@ -2,6 +2,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<header style="background: #1b5e20; padding: 15px; display: flex; align-items: center; border-bottom: 4px solid #ffb300;">
+    <img src="assets/logo.png" alt="Safari Tours Logo" style="height: 70px; width: auto; margin-right: 20px; border-radius: 50%;">
+    <h1 style="color: white; font-family: 'Trebuchet MS', sans-serif; margin: 0;">Safari Tours Kenya</h1>
+</header>
+
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Safari Tours | Book Your Adventure</title>

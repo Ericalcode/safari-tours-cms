@@ -34,7 +34,10 @@ if (isset($_POST['login'])) {
     <div class="admin-box" style="max-width:400px; margin: 100px auto; padding: 30px; border-top: 5px solid #1b5e20;">
         <h2 style="text-align:center;">Admin Login</h2>
         <?php if(isset($error)) echo "<p style='color:red; text-align:center;'>$error</p>"; ?>
-        
+        <div style="text-align: center; margin-bottom: 20px;">
+    <img src="assets/logo.png" alt="Safari Tours" style="width: 100px; height: auto;">
+    <h2 style="color: #1b5e20;">Admin Portal</h2>
+</div>
         <form method="POST">
             <label>Username</label>
             <input type="text" name="username" placeholder="e.g. eric_admin" required>
