@@ -2,75 +2,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<header style="background: #1b5e20; padding: 15px; display: flex; align-items: center; border-bottom: 4px solid #ffb300;">
-    <img src="assets/logo.png" alt="Safari Tours Logo" style="height: 70px; width: auto; margin-right: 20px; border-radius: 50%;">
-    <h1 style="color: white; font-family: 'Trebuchet MS', sans-serif; margin: 0;">Safari Tours Kenya</h1>
-</header>
-
-
-
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Safari Tours | Book Your Adventure</title>
+    <title>Safari Tours | Experience Kenya</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<nav class="navbar">
-    <div class="logo">Safari Tours</div>
-    <ul class="nav-links">
-        <li><a href="#destinations">Destinations</a></li>
-        <li><a href="#booking">Book Now</a></li>
-        <li><a href="admin_manage.php">Admin Panel</a></li>
-    </ul>
-</nav>
-
 <header>
-    <h1>Explore the Wild</h1>
-    <p>Authentic Kenyan Safaris Tailored for You</p>
+    <img src="assets/logo.png" alt="Safari Tours" style="height: 100px; width: auto; margin-right: 25px;">
+    <div>
+        <h1 style="color: var(--accent); margin: 0; font-size: 2.2rem;">Safari Tours Kenya</h1>
+        <p style="color: white; margin: 0; letter-spacing: 1px;">CONNECTING KENYA'S WILD</p>
+    </div>
 </header>
 
-<div class="container">
-    <section id="destinations">
-        <h2>Places to Visit & Packages</h2>
-        <div class="grid">
-            <?php
-            $result = mysqli_query($conn, "SELECT * FROM packages ORDER BY id DESC");
-            while($row = mysqli_fetch_assoc($result)) {
-                $img = (!empty($row['image_url']) && file_exists("uploads/".$row['image_url'])) ? "uploads/".$row['image_url'] : "https://via.placeholder.com/400x250?text=Safari+Kenya";
-                echo "<div class='card'>";
-                echo "<img src='$img' style='width:100%; height:200px; object-fit:cover; border-radius:8px;'>";
-                echo "<h3>".htmlspecialchars($row['title'])."</h3>";
-                echo "<p>Category: <strong>".$row['category']."</strong></p>";
-                echo "<p>".$row['description']."</p>";
-                echo "<p class='price-tag'>KES ".number_format($row['price'])."</p>";
-                echo "</div>";
-            }
-            ?>
-        </div>
-    </section>
+<section class="hero">
+    <h1>Discover the Heart of Kenya’s Wild</h1>
+    <p>Experience breathtaking wildlife safaris, rich cultural encounters, and exclusive luxury tours.</p>
+    <a href="#tours" style="background: var(--accent); color: black; padding: 12px 25px; text-decoration: none; font-weight: bold; border-radius: 5px;">View Our Packages</a>
+</section>
 
-    <section id="booking" class="admin-box">
-        <h2>Book Your Safari</h2>
-        <p>Choose your destination below. You will receive an instant confirmation email.</p>
-        <form action="submit_booking.php" method="POST">
-            <input type="text" name="name" placeholder="Full Name" required>
-            <input type="email" name="email" placeholder="Your Email Address" required>
-            <select name="tour" required>
-                <option value="">-- Select Destination --</option>
-                <?php
-                $res = mysqli_query($conn, "SELECT title FROM packages ORDER BY title ASC");
-                while($t = mysqli_fetch_assoc($res)) echo "<option value='".htmlspecialchars($t['title'])."'>".$t['title']."</option>";
-                ?>
-            </select>
-            <button type="submit">Confirm Booking</button>
-        </form>
-    </section>
+<div class="about-box">
+    <h2>About Our Heritage</h2>
+    <p>Based in the heart of Kenya, Safari Tours is dedicated to providing authentic African adventures. From the golden plains of the Maasai Mara to the white sands of Diani, we curate experiences that support local communities and protect our magnificent wildlife. Our expert guides ensure every journey is safe, educational, and unforgettable.</p>
 </div>
 
-<footer>
-    <p>&copy; 2026 Safari Tours Kenya. All Rights Reserved.</p>
-</footer>
+<h2 class="section-title" id="tours">Top Destinations</h2>
+<div style="display: flex; flex-wrap: wrap; justify-content: center; padding: 20px;">
+    <?php
+    $result = mysqli_query($conn, "SELECT * FROM packages");
+    while($row = mysqli_fetch_assoc($result)) {
+        echo "<div style='background: white; margin: 15px; width: 300px; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1);'>";
+        echo "<img src='uploads/".$row['image_url']."' style='width: 100%; height: 200px; object-fit: cover;'>";
+        echo "<div style='padding: 15px;'>";
+        echo "<h3>".$row['title']."</h3>";
+        echo "<p style='color: #1b5e20; font-weight: bold;'>KES ".number_format($row['price'])."</p>";
+        echo "<p style='font-size: 14px; color: #666;'>".$row['description']."</p>";
+        echo "<a href='book.php?id=".$row['id']."' style='display: block; text-align: center; background: #0a210d; color: white; padding: 10px; text-decoration: none; border-radius: 4px;'>Book Now</a>";
+        echo "</div></div>";
+    }
+    ?>
+</div>
 
 </body>
 </html>
